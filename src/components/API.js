@@ -7,16 +7,24 @@ function Api() {
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => setData(res.data.slice(0, 10)));
+      .then((res) => setData(res.data.slice(0, 3)));
   }, [data]);
 
   return (
     <div className="container">
-      <h2>Titles</h2>
+      <h2 className="mb-3">Posts</h2>
       <div>
         {data.map((post) => (
           <div className="card mb-2" key={post.id}>
-            <div className="m-3">{post.id}: {post.title}</div>
+            <div className="m-3">
+              <b>Post ID: </b>
+              {post.id}
+            </div>
+            <div className="m-3">
+              <b>Title: </b>
+              {post.title}
+            </div>
+            <div className="m-3">{post.body}</div>
           </div>
         ))}
       </div>
